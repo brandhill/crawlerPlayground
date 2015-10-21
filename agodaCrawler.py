@@ -51,5 +51,8 @@ class AgodaCrawler(unittest.TestCase):
     def getTitle(self):
         return "dummyTitle"
 
+    def getToken(self):
+        return "dummyToken"
+
 if __name__ == "__main__":
     unittest.main()
