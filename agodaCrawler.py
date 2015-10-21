@@ -48,5 +48,8 @@ class AgodaCrawler(unittest.TestCase):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
+    def getTitle(self):
+        return "dummyTitle"
+
 if __name__ == "__main__":
     unittest.main()
