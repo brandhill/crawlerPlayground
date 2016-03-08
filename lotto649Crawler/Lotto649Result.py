@@ -8,8 +8,8 @@ class Lotto649Result:
     # if __name__ == '__main__':
     #     main()
 
-    def __init__(self, value):
-        self.dd = value
+    # def __init__(self, value):
+    #     self.dd = value
 
 
     def set_first_prizes(self, value):
@@ -23,3 +23,7 @@ class Lotto649Result:
 
     def set_draw_sequences(self, value):
         self.draw_sequences = value
+
+    def __str__(self):
+        return self.first_prizes
+
