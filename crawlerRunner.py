@@ -16,6 +16,7 @@ from bs4 import BeautifulSoup
 # print soup.title.string
 
 
+
 def getSomeThing():
     url = "http://www.pythonforbeginners.com"
     content = urllib2.urlopen(url).read()
@@ -40,7 +41,7 @@ def saveToHtml():
 
 def getLotto649():
 
-    soup = BeautifulSoup(open("Lotto649_history.html"))
+    soup = BeautifulSoup(open("Lotto649_history.html"), "html.parser")
 
     # url = "http://www.taiwanlottery.com.tw/lotto/Lotto649/history.aspx"
     # content = urllib2.urlopen(url).read()
@@ -74,8 +75,15 @@ def getLotto649():
         drawSequences = row.find_all('span', attrs={'id': re.compile(r'(^Lotto649Control_history_dlQuery_SNo)')})
         # specialNumber = row.find_all('span', attrs={'id': re.compile(r'(^SuperLotto638Control_history1_dlQuery_SNo)')})
 
+        firstPrizes = row.find_all('span', attrs={'id': re.compile(r'(^Lotto649Control_history_dlQuery_L649_CategA5_)')})
+        secondPrizes = row.find_all('span', attrs={'id': re.compile(r'(^Lotto649Control_history_dlQuery_Label)')})
+
+
+        lotto649_result = Lotto649Result(1)
+
         for item in drawTerms:
-            print item.string
+            lotto649_result.set_term(item.string)
+            print lotto649_result.set_term
 
         for item in drawDates:
             print item.string
@@ -83,6 +91,16 @@ def getLotto649():
         for item in drawSequences:
             print item.string
 
+
+        for item in firstPrizes:
+            print item.string
+
+        for item in secondPrizes:
+            print item.string
+
+        # Lotto649Control_history_dlQuery_Label 32_9
+        # Lotto649Control_history_dlQuery_Label32_7
+        # Lotto649Control_history_dlQuery_Label14_6
 
         # print specialNumber[0].string
 
@@ -107,4 +125,5 @@ def getLotto649():
     #     print item.string
 
 
+getLotto649()
 
